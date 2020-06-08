@@ -56,6 +56,7 @@ header {
 nav {
 	margin-right: 5%;
 }
+
 nav ul {
 	list-style: none;
 	display: flex;
@@ -71,7 +72,7 @@ h1 {
 .header_img {
 	height: 800px;
 	background-attachment: fixed;
-  	background-position: center;
+  	background-position: top;
   	background-repeat: no-repeat;
   	background-size: cover;
 	color: #fff;
@@ -238,10 +239,10 @@ aside {
 	/* MENU PAGE */
 
 	.menu_title {
-		font-size: 6vw;
+		font-size: 5em;
 	}
 	.proj_info {
-		top: 60vh;
+		top: 30em;
 		margin-right: 25%;
 		font-size: 1em;
 	}
@@ -257,7 +258,7 @@ aside {
 	}
 	.post_list {
 		display: block;
-        flex: 0 1 70vw;
+        flex: 0 1 30em;
 		order: 2;
 		margin-left: 2em;
 	}
@@ -306,7 +307,7 @@ aside {
 		margin-left: 10%;
     }
 	.right {
-        flex: 0 0 20%;
+        flex: 1 0 10em;
     }
 	.article_body>p {
 		line-height: 1.5em;
@@ -341,25 +342,38 @@ aside {
 
 @media screen and (min-width: 1025px) {
 
+	header_wrap {
+		text-align: center;
+		display: flex;
+		justify-content: center;
+	}
 	header {
-		left: 50%;
-		margin-left: -35%; 
-		width: 70%;
+		display: inline-flex;
+		justify-content: center;
 	}
 	.header_img {
 		background-size: 65em;
+		max-width: 65em;
+		height: 50em;
+		background-position: top center;
 	}
 	.outer_flex {
 		display: flex;
 		flex-flow: row wrap;
+		justify-items: center;
 	}
 	.outer_left {
-		flex: 1 0 0em;
+		flex: 1 2 auto;
 		order: 1;
+	} 
+	.outer_right {
+		flex: 1 2 auto;
+		order: 3;
 	} 
 	article {
 		flex: 1 2 50em;
 		order: 2;
+		max-width: 65em;
 	}
 	.article_body {
 		max-width: 40em;
@@ -367,37 +381,36 @@ aside {
 	.proj_display {
 		flex: 1 2 50em;
 		order: 2;
+		max-width: 65em;
 	}
 	.post-list {
-		max-width: 40em;
+		flex: 0 2 auto;
+		order: 2;
 	}
 	.post_preview {
 		margin: 4em 0;
 	}
-	.outer_right {
-		flex: 1 0 0em;
-		order: 3;
-	} 
 	header {
 		font-size: 1.3em;
 	}
 	nav ul {
 		flex-flow: row wrap;
 	}
+	#home_menu header nav ul li {
+		margin: 0 5em;
+	}
 	nav ul li {
-		margin: 0 2em;
+		margin: 0 2.5em;
 	}
 	h1 {
 		font-size: 1.5em;
 	}	
-	.header_img {
-		height: 50em;
-		background-position: center;
-	}
 	.post_info {
 		top: 60%;
 	}
-			
+	.menu_left, .menu_right {
+		display: none;
+	}
 	h2 {
 		font-size: 3.5em;
 	}
