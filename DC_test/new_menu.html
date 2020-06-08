@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+	<!--- META --->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0>">
+	<meta name="description" content="Recursions Blog"> 
+	<meta name="author" content="binghari">
+	<!--- TWITTER --->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@binghari">
+	<meta name="twitter:title" content="Recursions Blog"> 
+	<meta name="twitter:description" content="Brief journeys in Majora's Mask">
+	<meta name="twitter:image" content="">
+	<!--- TITLE --->
+	<title>Recursions Blog</title>
+	<!--- FAVICON --->
+	<link rel="icon" href="">
+	<!--- STYLES --->
+	<link href="https://fonts.googleapis.com/css2?family=Eczar&family=Gentium+Basic&display=swap" rel="stylesheet">
+	<style>@import url(new_style.css)</style>
+	<!--- SCRIPTS --->
+	<script src="../jquery-3.5.1.min.js"></script>
+	<script src="../jquery.mobile-1.4.5.min.js"></script>
+	</head>
+
+<body>
+<header style='display: block;'>
+	<nav><ul>
+		<li><a href="START_again.html">About</a></li>
+		<li>Resources</li>
+		<li>Bibliography</li>
+	</ul></nav>
+</header>
+<!-- PAGE LAYOUT -->
+<main class="outer_flex">
+	<div class="proj_display">
+			<!-- PAGE TITLE -->
+			<div class="header_img" style="background-image: url('Michael%20Ostendorfer%20(1540)%20Astronomicum%20Caesareum%20.jpg');">
+				<div class="proj_info">
+				<h1 class="menu_title">Recursions</h1>
+					<p>Brief journeys in <cite>Majora's Mask</cite> </p>
+				</div>
+			</div>
+			<!-- POST-LIST -->
+			<div class="inner_flex">
+			<section class="post_list">
+				<section class="pub_info">
+					<p>Header image: <a href="https://www.metmuseum.org/art/collection/search/337061">Michael Ostendorfer, <cite>Astronomicum Caesareum</cite> (1540)</a></p>
+				</section>
+         <div class="post_preview">
+            <a href="investigations_of_a_dog.html">
+			<h3>Investigations of a Dog</h3>
+            <p>A close look at an actor in RAM</p>
+            <p class="publication"><time datetime="20200101">01.06.2020</time></p>
+            </a>
+        </div>
+		<div class="post_preview">
+            <a href="new_test.html">
+            <h3>Destined to Fade?</h3>
+            <p>In contrast to its prequel, <cite>Majora’s Mask</cite> emphasises contingency in fate</p>
+            <p class="publication"><time datetime="20200101">24.05.2020</time></p>
+            </a>
+        </div>
+		<div class="post_preview">
+            <a href="START_again.html">
+			<h3>START (again)</h3>
+            <p>An introduction to Recursions blog</p>
+            <p class="publication"><time datetime="20200520">20.05.2020</time></p>
+            </a>
+        </div>
+		</section>
+		<aside class="menu_left">
+		</aside>
+		<aside class="menu_right"></aside>
+		</div>
+	</div>
+	<aside class="outer_left"></aside>
+	<aside class="outer_right"></aside>	
+</main> 
+<footer>
+<small> Web design by R Bingham.
+			Header images all public domain.
+			Game images &copy; 2000 Nintendo. Fonts by <a href="https://fonts.google.com/specimen/Eczar?category=Serif,Sans+Serif,Monospace">Rosetta</a> and <a href="">Victor Gaultney</a></small>
+</footer>
+	
+<!--- JAVASCRIPT -->
+	
+<script>
+$(document).ready(function() {	
+
+	// SITE HEADER ANIMATIONS SCRIPT
+	$(window).scroll(function() {
+    	if (($(window).width() < 768 && $(this).scrollTop() > 800)
+			|| 	(($(window).width() >= 768) && ($(window).width() < 1025)) && ($(this).scrollTop() > 1100)
+		   	||	($(window).width() >= 1025 && $(this).scrollTop() > 900)
+		  ){
+			$("header").css({"height": "3em", "position": "fixed", "left": "0", "width": "100%", "margin": "-1em -2% -2% 0%", "background-color": "#000", "border-bottom": "#bbb solid 1px", "justify-content": "center", "padding": "0", "text-shadow": "none", "color": "#ddd"});
+			$("header a").css({"color": "#ddd"});
+			$("li:contains('Resources'),  li:contains('Bibliography')").css({"display": "none"});
+    	} else if ($(window).width() >= 1025 && $(this).scrollTop() < 900) {
+			$("header").css({"height": "", "position": "absolute", "width": "70%", "margin": "0 2%", "margin-left": "-35%", "left": "50%", "border-width": "", "border-bottom": "", "background-color": "", "justify-content": "space-between", "padding": "2vw", "text-shadow": "1px 1px 0 #999", "color": "#fff"});
+			$("header a").css({"color": "#fff"});
+			$("li:contains('Resources'),  li:contains('Bibliography')").css({"display": "block", });
+		} else {
+			$("header").css({"height": "", "position": "absolute", "left": "","width": "90%", "margin": "0 2%", "border-width": "", "border-bottom": "", "background-color": "", "justify-content": "space-between", "padding": "2vw", "text-shadow": "1px 1px 0 #999", "color": "#fff"});
+			$("header a").css({"color": "#fff"});
+			$("li:contains('Resources'),  li:contains('Bibliography')").css({"display": "block"});
+		}
+	});
+</script>
+	
+</body>
+</html>

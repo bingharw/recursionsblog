@@ -1,0 +1,173 @@
+<!doctype html>
+<html>
+<head>
+	<!--- META --->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0>">
+	<meta name="description" content="Recursions Blog"> 
+	<meta name="author" content="binghari">
+	<!--- TWITTER --->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@binghari">
+	<meta name="twitter:title" content="Recursions: Investigations of a Dog"> 
+	<meta name="twitter:description" content="A close look at an actor in RAM
+
+">
+	<meta name="twitter:image" content="">
+	<!--- TITLE --->
+	<title>Recursions Blog</title>
+	<!--- FAVICON --->
+	<link rel="icon" href="">
+	<!--- STYLES --->
+	<link href="https://fonts.googleapis.com/css2?family=Eczar&family=Gentium+Basic&display=swap" rel="stylesheet">
+	<style>@import url(new_style.css)</style>
+	<!--- SCRIPTS --->
+	<script src="../jquery-3.5.1.min.js"></script>
+	</head>
+
+<body>
+<header>
+	<h1><a href="new_menu.html">Recursions blog</a></h1>
+	<nav><ul>
+		<li><a href="START_again.html">About</a></li>
+		<li>Resources</li>
+		<li>Bibliography</li>
+	</ul></nav>
+</header>
+<main class="outer_flex">
+	<article>
+			<div class="header_img" style="background-image: url('toussaint_dog.jpg');">
+				<div class="post_info">
+				<h2>Investigations of a Dog</h2>
+					<p>A close look at an actor in RAM</p>
+				</div>
+			</div>
+			<div class="inner_flex">
+			<div class="article_body">
+				<section class="pub_info">
+				<p><time datetime="20200601">1 June 2020</time></p>
+					<p>Header image: <a href="https://www.rijksmuseum.nl/nl/collectie/SK-A-2257">Nicolas Toussaint Charlet, <cite>Head of a Dog</cite> (c.1820-1845)</a></p>
+				</section>
+				<p>Although it is decades old, fan communities have only recently been able to investigate the “Zelda64” engine that supplies the procedural foundation for both <cite>Ocarina of Time</cite> and <cite>Majora’s Mask</cite>. The creative force of speedrunning communities in particular has been key to breaking through the mystery imposed by Nintendo’s strict approach to intellectual property. Much of the public understanding of the engine has long been a careful, communal accumulation of intuitions derived from the experience of play. More recently, the “debugging” functionality in game emulators and community “decompiles” of <cite>Ocarina</cite> and <cite>Majora</cite>’s source code hosted on GitHub have provided some technical solidity to these intuitions.</p>
+				<p>One of my aims with this blog is to begin introducing hermeneutic dimensions to this ongoing investigation of the Zelda64 engine. What new meanings are produced when we fold a knowledge of the game’s engine back into its "representational layer"? How might we read technical processes like dynamic memory allocation thematically?</p>
+				<p>However, for this short post my ambitions are modest. Relying on community knowledge and tools, I will take a close look at one Zelda64 <b>actor</b>: the dog in South Clock Town. <def>“Actors”</def> are the interactive elements in the Zelda64 engine, elements that are not static parts of an environment (these are "objects”). These elements include non-playable characters and enemies, as well as seemingly inert pieces of scenery such as pots and bushes. </p>
+				<img src="dog_actor.png">
+				<figcaption>Fig. 1: The South Clock Town dog, also known as AI 00E2:  5 00 0 1D20 </figcaption>
+				<p>I have chosen this particular dog for various reasons. First, you can interact with a dog actor in multiple ways: you can pick it up, you can have it follow you, you can let it attack you, and you can even prompt dialogue from it. It therefore provides a good example for how all these interactions work. Secondly, there are multiple instances of this actor in both <cite>Majora</cite> and <cite>Ocarina</cite>, which allows for meaningful comparisons between individual instances and the two games. Finally, since this particular instance of the dog actor is located right at the start of a 3-day cycle, it has long been a “default” actor selected by hackers to experiment with the game. Since I borrow heavily from this tradition, I chose this actor to pay homage to it. </p>
+				<p>A new cycle begins. The Nintendo 64’s <b>central processing unit</b> (CPU) accesses the “scene” file for South Clock Town, stored in <cite>Majora</cite>’s <b>Read-Only Memory</b> (ROM). ROM is “non-volatile” memory, permanently written into the game cartridge and unalterable. All the basic components of a videogame like <cite>Majora</cite>—the character models and animations, the objects and “textures” of the environments, the scripts that determine what actions you take, the text and music—are stored in ROM at certain addresses. This is what <cite>Majora</cite> is, independent of the player, the Nintendo 64 console, and its thick plastic cartridge: a block of 32 mebibytes (MiB) of ROM. </p>
+				<p>The CPU accesses the South Clock Town scene file, inside which is, among other things, a list of actor memory addresses along with a separate list of these actors’ initial coordinates and rotations (i.e. where they are and in what direction they are facing). The CPU locates these actors in the ROM and loads them onto the Random-Access Memory (RAM). </p>
+				<p>Located in the N64 console, RAM is a “volatile” memory: it stores information so long as the console remains powered on. It allows the CPU to access and execute information retrieved from a game’s ROM in a non-linear fashion. When we describe a scene “loading” or an enemy “spawning” in a videogame, we are speaking about a CPU accessing information from a game’s ROM and executing it on the console’s RAM. An N64 has 4 MiB of RAM, although the “Expansion Pak” adds a further 4 MiB. <cite>Majora</cite> requires this add-on, since it addresses 8 MiB of RAM. </p>
+				<aside class="note">
+					<p class="ref">1. Hackers and speedrunners have produced tools to help parse <cite>Majora</cite>’s RAM. 
+					<span class="ref_active"> (...)</span>
+					<span class="ref_full">I depend on Spectrum and Verbose Ocarina, both created by <a href="https://github.com/mzxrules/MasterOcarina/tree/master/">mzxrules</a>, as well as the debugger provided by the <a href="https://www.pj64-emu.com/nightly-builds">Project 64 Development Build</a>. Since memory offsets can differ from version to version, I should also note that in this post I refer to the first Japanese N64 version of <cite>Mujura no Kamen</cite> (aka ‘J 1.0’).</span></p>
+            	</aside>
+				<p>With all this in mind, we can now turn to consider the South Clock Town Dog as represented in RAM.<span class="ref_num">1</span></p>
+				<img src="dog_ram.gif" alt="Debugger displaying RAM offsets relevant to the dog actor">
+				<figcaption>Fig. 2: The Dog as represented by the Project64D debugger</figcaption>
+				<p>The Project64D debugger represents the RAM as a list of <b>hexadecimal</b> values. We usually count in <b>decimal</b> or “base-10” numbers, using ten numeric characters from 0 to 9 before adding a new digit. However, a hexadecimal or “base-16” system counts from 1 to 9 and then A to F, allowing for sixteen characters. This reduces the amount of RAM required to store information.</p>
+				<aside class="note">
+					<p class="ref">2. “0x” indicates a hexadecimal value.</p>
+            	</aside>
+				<p>The numbers running down the left and across the top, in a darker grey, are offset values: these are the addresses used to locate and access <b>bytes</b> of information in ROM and RAM. The 8MiB of RAM in <cite>Majora</cite> occupies the offsets 0x80000000 to 0x807FFFFF.<span class="ref_num">2</span></p>
+				<p>Our particular instance of the Dog actor is located at offset 0x804CE80 in RAM.</p>
+				<p>An actor is a collection of files, foremost among which is the <b>overlay</b>. This is a file containing the actor’s unique code, which is transferred to RAM when that actor spawns. One overlay file can be used to cover multiple instances of an actor: this is how the game is able to handle the dozens of dog actors in the “Doggy Racetrack” scene, for example. </p>
+				<p>We can now begin to start deconstructing the different components that make up our dog actor. First of all, for just over the first two lines (0x8042CE80 to 0x8042CEA0), we have information that “points” to ROM files containing data about the dog actor as well as its particular instance in this scene (see Fig. 1). The 00E2 that begins this instance is constant across dog actors, whereas the rest of the numeric information differs.</p>
+				<img src="dog_file.png" alt="Selected RAM offsets">
+				<figcaption>Fig. 3: RAM addresses pointing to dog's actor overlay and instance</figcaption>
+				<p>The following five lines contain dynamic information about the actor’s position in the scene (see below). The three bytes of shifting information spanning addresses 0x08042CEA4 to 0x8042CAC (top line) contain the actor’s X, Y and Z coordinates. You’ll notice the information remains static for a few seconds as the dog stops moving to bark. </p>
+				<img src="dog_xyz.gif" alt="Selected RAM offsets">
+				<figcaption>Fig. 4: RAM addresses with dog's location and rotation data</figcaption>
+				<p>The single byte of information at 0x8042CEB0 (Fig. 4: start of second line down) contains the dog’s rotation data. It changes as the dog moves in its circle around the scene, and like the XYZ coordinates it pauses when the dog stops to bark.</p>
+				<p>Skipping over a few bytes, the three that span offsets 0x8042CEBC to 0x8042CEDE0 (Fig. 4: bottom two lines in above image) contain data about the dog’s scale, with X, Y and Z axes. The Y axis stays at 0 while the dog remains on the ground, but rises to around 421A0000 when picked up.</p>
+				<p>The Project64D debugger functions like a hex editor, meaning that the user can fiddle with the values stored in RAM. Editing the bytes of XYZ data in the debugger moves the dog around the scene, while editing the rotation data causes the dog to turn around on the spot. This is how I mapped out these values. Enjoyably, editing the dog’s scale causes it to enlarge and shrink along X, Y and Z axes. </p>
+				<img src="dog_large.png" alt="A dog twice the size of the boy">
+				<figcaption>Fig. 5: The dog actor with increaed XYZ scale vlaues</figcaption>
+				<img src="dog_small.png" alt="A tiny dog">
+				<figcaption>Fig. 6: The dog actor with lower XYZ scale values </figcaption>
+				<img src="dog_stretch.png" alt="A wide-looking dog">
+				<figcaption>Fig. 7: The dog actor with increaed X scale value only</figcaption>
+				<p>Returning to the information I skipped over, the three bytes spanning 0x8042CEBC to 0x8042CEC4 (Fig. 4: lines 2 and 3) contain the location of the dog’s marker for “Z-targeting”. This is the system by which the player presses the Z button in order to “lock-on” to actors in the game world. This is an important feature of the Zelda64 engine, one that has since become standard for games such as <cite>Dark Souls</cite>. </p>
+				<p>With <cite>Majora</cite> being a game that is thematically interested in masks and faces, we might find some significance in the fact that the Zelda64 engine decouples the visible face of an actor’s model from the “informatic face” that the player-avatar faces. The XYZ coordinates of the Z-targeting marker are not trained on the dog’s head but rather on just above its head. Editing them in the debugger changes the location of the yellow arrow located over the actor. Doing so while the player is locked on to the actor causes the boy to spin around, and the yellow arrow hovering above the actor to move.</p>
+				<aside class="note">
+					<p class="ref">3. Gilles Deleuze and Félix Guattari, <cite>A Thousand Plateaus</cite> 
+					<span class="ref_active"> (...)</span>
+					<span class="ref_full"><cite>: Capitalism and Schizophrenia (London: Bloomsbury, 2013)</cite>, pp. 196-198</span></p>
+            	</aside>
+				<p>This decoupling of an actor’s faces reminds me of Gilles Deleuze and Félix  Guattari’s desire to escape the restrictive cultural focus on the face—“white cheeks, a chalk face with eyes cut in for. a black hole”:</p>
+					<blockquote>
+					the face is a horror story. It is certain that the signifier does not construct the wall that it needs all by itself; it is certain that subjectivity does not dig its hole all alone. Concrete faces cannot be assumed to come ready-made. They are engendered by an <strong>abstract machine of faciality</strong> (<i>visagétité</i>), which produces them at the same time as it gives back its white wall and subjectivity is black hole. Thus the black hole/white wall system is, to begin with, not a face but the abstract machne that produces faces according to the changeable combinations of its cogwheels. Do not expect the abstract machine to resemble what it produces, or will produce. 
+					</blockquote>
+				<p>What might it mean to re-read the themes of <cite>Majora</cite> through an understanding of how faces and facing function in the game’s memory? What would it mean to think of a face not as a feature or property of an individual but rather as something assigned, or as a relation? This will require further investigation into actor files. </p>
+			</div>
+			<aside class="right"></aside>
+		</div>
+	</article>
+	<aside class="outer_left"></aside>
+	<aside class="outer_right"></aside>
+</main>
+<footer>
+	<small> Web design by R Bingham.
+			Header images all public domain.
+			Game images &copy; 2000 Nintendo. Fonts by <a href="https://fonts.google.com/specimen/Eczar?category=Serif,Sans+Serif,Monospace">Rosetta</a> and <a href="">Victor Gaultney</a></small>
+</footer>
+	
+<!--- JAVASCRIPT -->
+	
+<script>
+$(document).ready(function() {	
+	
+	// PAGE LOAD ANIMATION
+	/*
+	$(document).onload(function() {
+		$("header_img").fadeIn(400);
+		$("header, .post_info, .article_body, footer").fadeIn(1000);
+	});
+	*/
+	/*
+	// SITE HEADER ANIMATIONS SCRIPT
+	$(window).scroll(function() {
+    	if (($(window).width() < 768 && $(this).scrollTop() > 800)
+			|| 	(($(window).width() >= 768) && ($(window).width() < 1025)) && ($(this).scrollTop() > 1100)
+		   	||	($(window).width() >= 1025 && $(this).scrollTop() > 900)
+		  ){
+			$("header").css({"height": "3em", "position": "fixed", "left": "0", "width": "100%", "margin": "-1em -2% -2% 0%", "background-color": "#000", "border-bottom": "#bbb solid 1px", "justify-content": "center", "padding": "0", "text-shadow": "none", "color": "#ddd"});
+			$("header a").css({"color": "#ddd"});
+			$("li:contains('Resources'),  li:contains('Bibliography')").css({"display": "none"});
+    	} else if ($(window).width() >= 1025 && $(this).scrollTop() < 900) {
+			$("header").css({"height": "", "position": "absolute", "width": "70%", "margin": "0 2%", "margin-left": "-35%", "left": "50%", "border-width": "", "border-bottom": "", "background-color": "", "justify-content": "space-between", "padding": "2vw", "text-shadow": "1px 1px 0 #999", "color": "#fff"});
+			$("header a").css({"color": "#fff"});
+			$("li:contains('Resources'),  li:contains('Bibliography')").css({"display": "block", });
+		} else {
+			$("header").css({"height": "", "position": "absolute", "left": "","width": "90%", "margin": "0 2%", "border-width": "", "border-bottom": "", "background-color": "", "justify-content": "space-between", "padding": "2vw", "text-shadow": "1px 1px 0 #999", "color": "#fff"});
+			$("header a").css({"color": "#fff"});
+			$("li:contains('Resources'),  li:contains('Bibliography')").css({"display": "block"});
+		}
+	}); */
+	
+	// SIDENOTES SCRIPT
+	var ref = false;
+	$(".ref").on("click", function() {
+		if ($(window).width() >= 768) {
+			if (!ref) {
+				$(".ref, .ref_active").css({"color": "transparent"});
+				$(this).find(".ref_active").css({"display": "none"});
+				$(this).find(".ref_full").css({"display": "inline"});
+				$(this).css({"color": "inherit"});
+				ref = true;
+			} else {
+				$(this).find(".ref_active").css({"display": "inline"});
+				$(this).find(".ref_full").css({"z-index": "inherit", "display": "none"});
+				$(".ref, .ref_active").css({"color": "inherit"});
+				ref = false;
+			}
+		} else {
+			$(".ref_active").css({"display": "none"});
+			$(".ref_full").css({"display": "inline"});
+		}	
+	})
+});
+</script>
+	
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!doctype html>
+<html>
+<head>
+	<!--- META --->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0>">
+	<meta name="description" content="Recursions Blog"> 
+	<meta name="author" content="binghari">
+	<!--- TWITTER --->
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@binghari">
+	<meta name="twitter:title" content="Recursions: Introduction"> 
+	<meta name="twitter:description" content="Recursions Blog">
+	<meta name="twitter:image" content="">
+	<!--- TITLE --->
+	<title>Recursions Blog</title>
+	<!--- FAVICON --->
+	<link rel="icon" href="">
+	<!--- STYLES --->
+	<link href="https://fonts.googleapis.com/css2?family=Eczar&family=Gentium+Basic&display=swap" rel="stylesheet">
+	<style>@import url(new_style.css)</style>
+	<!--- SCRIPTS --->
+	<script src="../jquery-3.5.1.min.js"></script>
+	</head>
+
+<body>
+<header>
+	<h1><a href="new_menu.html">Recursions blog</a></h1>
+	<nav><ul>
+		<li><a href="START_again.html">About</a></li>
+		<li>Resources</li>
+		<li>Bibliography</li>
+	</ul></nav>
+</header>
+<main class="outer_flex">
+	<article>
+			<div class="header_img" style="background-image: url('Michael%20Ostendorfer%20(1540)%20Astronomicum%20Caesareum%20.jpg');">
+				<div class="post_info">
+				<h2>START (again)</h2>
+					<p>An introduction to Recursions blog</p>
+				</div>
+			</div>
+			<div class="inner_flex">
+			<div class="article_body">
+				<section class="pub_info">
+				<p><time datetime="20200520">20 May 2020</time></p>
+					<p>Header image: <a href="https://www.metmuseum.org/art/collection/search/337061">Michael Ostendorfer, <cite>Astronomicum Caesareum</cite> (1540)</a></p>
+				</section>
+				<aside class="note">
+					<p class="ref">1. Astrid Ensslin, <cite>Literary Gaming</cite><span class="ref_active"> (...)</span>
+					<span class="ref_full">(Cambridge, MA: MIT Press, 2014), p. 3</span></p>
+            	</aside>
+				<aside class="note">
+					<p class="ref">2. Rebekah Cunningham, 'Dynamic Storytelling in Videogames'<span class="ref_active"> (...)</span>
+						<span class="ref_full">, <cite>Alluvium</cite>, 7.5 (2019) [<a href="https://www.alluvium-journal.org/2019/12/16/dynamic-storytelling-in-episodic-videogames/">Link</a>]</span></p>
+            	</aside>
+				<p>Hosted on GitHub, this blog is a repository of sorts for a research project on <cite>The Legend of Zelda: Majora’s Mask</cite>, a videogame released for the Nintendo 64 console in 2000. With its focus on a single videogame, it is in part an attempt to follow Astrid Ensslin’s call for game scholarship to move beyond the defining terms towards the analysis of specific artefacts.<span class="ref_num">1</span> Here, <cite>Majora</cite> isn’t an example of the broader form. I’m not as interested in how videogames work as I am in how <strong>this</strong> game works. However, if indicative of anything broader, this project will hopefully go on to demonstrate what Rebekah Cunningham describes as the "dynamic" and "reciprocal" characteristics of digital texts: the way online communities can lend a decades-old game an ongoing existence, one that breaks free of its initial significance.<span class="ref_num">2</span></p>  
+				<aside class="note">
+					<p class="ref">3. Mark Fisher, 'They Can be Different in the Future Too'<span class="ref_active"> (...)</span>
+					<span class="ref_full">: Mark Fisher interviewed (interviewed by Rowan Wilson for Versobooks.com)[<a href="https://www.versobooks.com/blogs/3051-they-can-be-different-in-the-future-too-mark-fisher-interviewed">Link</a> - accessed 20 May 2020]</span></p>
+            	</aside>
+				<p>I decided to (at least) start this project in a blog, rather than an academic article or book, after reading Fisher’s description of blogging as</p>
+					<blockquote> a way of getting into writing after the traumatic experience of doing a PhD. PhD work bullies one into the idea that you can’t say anything about a subject until you’ve read every possible authority on it. But blogging seemed a more informal space, without that kind of pressure.<span class="ref_num">3</span>
+					</blockquote>
+				<p>In this same spirit of informality, this blog offers a series of small, looping trips through its text, rather than a coherent analysis. Taking advantage of the opportunity to experiment and make mistakes, each post will explore a different aspect of <cite>Majora</cite> and see how new observations might fold back into an <strong>incoherent</strong> whole.</p>
+				<p><dfn>Recursion</dfn> is a method of producing a solution to a large, complex problem by breaking it down into small, simple processes. These smaller processes then repeat, enacting small gains until they produce the larger solution, at which point the solution is given. In computer science, this entails a function that calls itself until some “base condition” is met. For example:</p>
+				<pre>
+int getHundred (int number) {
+	if (number == 100) 
+		return number;
+	else if (number &lt; 100)
+		getHundred (number + 1);
+	else 
+		getHundred (number - 1);
+}</pre>
+				<p>The above function, “getHundred”, receives an integer (“number”) as its input. It then checks if this integer has the value of 100. If it has a value of less than 100, it calls itself, inputting an integer with a value one higher than the original input. If the input is neither equal to nor less than 100—i.e. it's greater than 100—it calls itself with one value lower. In any case, the function will therefore call itself recursively until it recieves a value of 100. Once this base condition is met, the function terminates. A useless function, but a recursive one, nonetheless.</p>
+				<aside class="note">
+					<p class="ref">4. Yuk Hui, <cite>On the Existence of Digital Objects</cite><span class="ref_active"> (...)</span>
+					<span class="ref_full">(Minneapolis: University of Minnesota Press, 2016), pp. 236; 240</span></p>
+            	</aside>
+				<p>In <cite>On the Existence of Digital Objects</cite>, Yuk Hui argues that <q>Recursion reaches deep into the question of time”</q>.<span class="ref_num">4</span> This is because <q>“a recursive function only comes to a halt when a certain terminal state is reached, while within the process, what is the past is always ahead, because each function is expecting something to come, something that will bring the procedure to a close”</q>.</p>
+				<aside class="note">
+					<p class="ref">5. In an effort to emphasise what's particular about <cite>Majora</cite>
+					<span class="ref_active"> (...)</span>
+					<span class="ref_full">, I'll avoid referencing the wider Zelda franchise until later in the project. This means avoiding names or terms given outside  <cite>Majora</cite> and, since the two are intertwined, <cite>Ocarina</cite>. That includes the name "Link", which is not given in either game. I'm not arguing for ignoring the paratexts and media mix surrounding Majora, only indicating that I'll begin folding them into the project when ready.
+						</span></p>
+            	</aside>
+				<p><q>Majora</q> is a videogame that explores a similar model of time. While journeying in the woods in search of a long-lost friend, a boy is attacked by a mask-wearing imp.<span class=ref_num>5</span> The imp, named the "Skull Kid", steals the boy's precious musical instrument, an ocarina, before transforming him into a lowly creature. The boy is found in this state by a travelling salesman, who offers to return him to normal on the condition that he retrieve his musical instrument, along with a powerful, ancient mask that the Skull Kid stole.</p>
+				<img src="skull_kid_ocarina.png" alt="Skull kid caught holding ocarina">
+				<figcaption>Skull Kid steals the boy's ocarina.</figcaption>
+				<p>The boy finds himself in Clock Town in a land called Termina. The town is all but empty and in disarray, its “Festival of Time” threatened by the fact that the moon appears to be falling from the sky. After three days, just before the moon hits the land, the boy finds and confronts the imp, managing to retrieve his ocarina. Holding it, he remembers a “Song of Time” that an old friend of his had taught him. Playing this song, he finds himself falling through time, returning to the day he arrived in Clock Town.</p>
+				<p>The boy returns to the salesman who managed to return him to his prior state by trapping the creature’s restless spirit in a mask. However, the salesman demands that he go back out and retrieve the ancient mask from the Skull Kid as promised, since it contains the evil spirit that is pulling the down moon. To do this, the boy must travel throughout Termina to find and enlist the help of four “guardians” who can prevent the moon’s course.</p>
+				<img src="song_of_time.png" src="The boy falling through time">
+				<figcaption>The boy returns to the First Day</figcaption>
+				<p>From this point on, <cite>Majora</cite> becomes an enactment of recursion. The task at hand—assembling the guardians and retrieving the titular “Majora’s Mask”—is unmanageable in the seventy-two “hours” left before the apocalypse. The player must therefore break the main task down into smaller pieces, making minor progress then repeating the same three days until finally the base condition is met, at which point the game ends. The player moves with an eye to the past: acquiring new items that can create new paths out of prior events.</p> 
+				<aside class="note">
+					<p class="ref">6. Yuk Hui, <cite>Recursivity and Contingency</cite><span class="ref_active"> (...)</span>
+					<span class="ref_full">(London: Rowman &amp; Littlefield, 2019)</span></p>
+            	</aside>				
+				<p>In his recent work, <cite>Recursivity and Contingency</cite>, Yuk Hui elaborates a theory of recursion beyond its technical existence. Here, “recursivity” names a broader “organic mechanism” of “being in becoming”, where the terminal state is not defined by a base condition but instead is “immanent” to the repetition.<span class="ref_num">6</span> A recursive loop encounters the unexpected—a “contingency”—and incorporates this into its function, taking itself towards an unknown terminal point. Its repetitions therefore have a direction, yet one not defined at the outset as a “base condition”.</p>
+				<p>On this blog, I will move back and forth between technical and organic definitions of recursivity, starting with my own recursive encounters with <cite>Majora</cite> as a commodity, as intellectual property. First of all, the game is itself something of a recursion: the game recycles the engine of its best-selling prequel, <cite>The Lengend of Zelda: Ocarina of Time</cite> (1998), placing its "assets"—e.g. character models, animations, textures, etc.—into new combinations and situations.</p>
+				<aside class="note">
+					<p class="ref">7. Monthly, from 'Legend of Zelda Majora’s Mask Epic Adventure Guide Part 1' <span class="ref_active"> (...)</span>
+					<span class="ref_full">, <cite>Nintendo Official Magazine</cite>, 100 (January 2001), pp. 60-69; to ‘Legend of Zelda Majora’s Mask Hot Spots and Masks Guide Part 2’, <cite>Nintendo Official Magazine</cite>, 104 (May 2001) pp. 68-71 [<a href="http://read.ukprintarchive.com/EMAP/Nintendo%20Offical%20Magazine/">Link to archive</a>]</span></p>
+            	</aside>
+				<p>In 2000, I was an eight years old and a Zelda obsessive. However initial £50 price tag—and further £25 necessary for the required “Expansion Pak”—therefore barred me from playing <cite>Majora</cite> until I picked up a second-hand copy some years later. In the meantime, I read and re-read an entire walkthrough published across four issues of <cite>Nintendo Official Magazine</cite> in 2001.<span class="">7</span> Once I did play the game itself, the uncanny effect of its recycling <cite>Ocarina</cite>'s engine and assets was therefore amplified by my ersatz knowledge of its narrative and puzzles derived from text and image. Due to the deterioration of my N64 and my impatience with the game’s unforgiving save system, I would only complete Majora some further years later on another permeation, <cite>The Legend of Zelda: Collector’s Edition</cite> (2003), which emulated several older Zelda titles on the Nintendo GameCube.</p>
+				<p>The dark and surreal tone of <cite>Majora</cite> has provoked numerous fan theories over the past two decades. I came across one such theory by way of the now-defunct web-ranking browser extension ‘StumbleUpon’ as I approached the end of my secondary education, aged sixteen. This theory was initially posted to the <cite>Zelda Legends</cite> forums in 2006 by Dan Merrill, under the username Hylian Dan. Merill would enact his own recursion, further developing the post on the Zelda Universe fan site two months later and revisiting it again in 2011.</p>
+				<p>Merrill’s readings of Majora are detailed and provocative, weaving together a complex subtext of blasphemy out of suggestive yet easily ignored models and textures in the game’s Stone Tower area. As he noted in his 2011 post, readers were sceptical of his claims—particularly the idea that the notoriously family-friendly Nintendo would purposefully include phallic imagery in one of their games. Nevertheless, his careful attention paid to the minutiae of a game I had found frustrating and compelling in equal parts upended my entire understanding of how I might approach cultural texts.</p>
+				<p>Replaying <cite>Majora</cite> in the light of Merrill’s readings, I discovered that certain terms I had never fully understood in my English classes— theme, symbol, context, form—gained sudden clarity. I developed a newfound obsession for textual analysis and opted to specialise in English Literature for my final years of secondary education before pursuing an undergraduate degree in the same subject. Nine years and one doctorate in English Literature later, I am returning to <cite>Majora</cite> once again to try and make sense of the game that laid the foundations for my past decade.</p>
+				<p>Various overreaches or omittances become apparent when returning to individual fan theories about <cite>Majora</cite> in the light of my humanities training. Furthermore, as a collection these theories rarely address one together dialectically to piece together a cumulative understanding. However, rather than dismissing fan analyses on the grounds of authority—for not ‘amateur’, or not ‘peer reviewed’—my approach will be to work with them, identifying and crediting their strongest arguments. I will also seek to fold in analysis deriving from the ongoing engagement by hackers, decompilers, speedrunners and alternate-reality gamers. These “metagaming” communities bend and reconfigure <cite>Majora</cite> to establish new parameters of play, introducing contingencies that recursively lead the game outside of its initial boundaries.</p>
+				<aside class="note">
+					<p class="ref">8. Bruno Latour, <cite>Reassmebling the Social</cite> <span class="ref_active"> (...)</span>
+						<span class="ref_full"><cite>: An Introduction to Actor-Network Theory</cite> (Oxford: Oxford University Press, 2005)</span></p>
+            	</aside>
+				<p>I have been thinking of this project in the terms offered by Bruno Latour’s “Actor-Network Theory”, although I am not entirely wedded to his approach.<span class="ref_num">8</span>  No “actor” in the “network” we might refer to as Majora’s Mask envelops all the others. The intentions of developers are not gospel, but nor can they be dismissed. The narrative holds no “true meaning” to uncover but can instead be placed in relationships with other texts that produce surprising new meanings. We can “open the hood” and consider the game’s source code, but only to find another actor, not a “deeper” or “truer” embodiment of the game. </p>
+				<p>In short, this project does not offer a “comprehensive theory” of <cite>Majora</cite>, as others have.  Nor does it offer a “deep dive”. Instead, it attempts something of a long, shallow and meandering swim; or, following Yuk Hui, a recursive movement, one whose final cause is imminent, and whose encounters with contingencies lead the whole in some undefined yet definite direction. </p>
+				
+			</div>
+			<aside class="right"></aside>
+		</div>
+	</article>
+	<aside class="outer_left"></aside>
+	<aside class="outer_right"></aside>
+</main>
+<footer>
+<small> Web design by R Bingham.
+			Header images all public domain.
+			Game images &copy; 2000 Nintendo. Fonts by <a href="https://fonts.google.com/specimen/Eczar?category=Serif,Sans+Serif,Monospace">Rosetta</a> and <a href="">Victor Gaultney</a></small>
+</footer>
+	
+<!--- JAVASCRIPT -->
+	
+<script>
+$(document).ready(function() {	
+	
+	// PAGE LOAD ANIMATION
+	/*
+	$(document).onload(function() {
+		$("header_img").fadeIn(400);
+		$("header, .post_info, .article_body, footer").fadeIn(1000);
+	});
+	*/
+	/*
+	// SITE HEADER ANIMATIONS SCRIPT
+	$(window).scroll(function() {
+    	if (($(window).width() < 768 && $(this).scrollTop() > 800)
+			|| 	(($(window).width() >= 768) && ($(window).width() < 1025)) && ($(this).scrollTop() > 1100)
+		   	||	($(window).width() >= 1025 && $(this).scrollTop() > 900)
+		  ){
+			$("header").css({"height": "3em", "position": "fixed", "left": "0", "width": "100%", "margin": "-1em -2% -2% 0%", "background-color": "#000", "border-bottom": "#bbb solid 1px", "justify-content": "center", "padding": "0", "text-shadow": "none", "color": "#ddd"});
+			$("header a").css({"color": "#ddd"});
+			$("li:contains('Resources'),  li:contains('Bibliography')").css({"display": "none"});
+    	} else if ($(window).width() >= 1025 && $(this).scrollTop() < 900) {
+			$("header").css({"height": "", "position": "absolute", "width": "70%", "margin": "0 2%", "margin-left": "-35%", "left": "50%", "border-width": "", "border-bottom": "", "background-color": "", "justify-content": "space-between", "padding": "2vw", "text-shadow": "1px 1px 0 #999", "color": "#fff"});
+			$("header a").css({"color": "#fff"});
+			$("li:contains('Resources'),  li:contains('Bibliography')").css({"display": "block", });
+		} else {
+			$("header").css({"height": "", "position": "absolute", "left": "","width": "90%", "margin": "0 2%", "border-width": "", "border-bottom": "", "background-color": "", "justify-content": "space-between", "padding": "2vw", "text-shadow": "1px 1px 0 #999", "color": "#fff"});
+			$("header a").css({"color": "#fff"});
+			$("li:contains('Resources'),  li:contains('Bibliography')").css({"display": "block"});
+		}
+	}); */
+	
+	// SIDENOTES SCRIPT
+	var ref = false;
+	$(".ref").on("click", function() {
+		if ($(window).width() >= 768) {
+			if (!ref) {
+				$(".ref, .ref_active").css({"color": "transparent"});
+				$(this).find(".ref_active").css({"display": "none"});
+				$(this).find(".ref_full").css({"display": "inline"});
+				$(this).css({"color": "inherit"});
+				ref = true;
+			} else {
+				$(this).find(".ref_active").css({"display": "inline"});
+				$(this).find(".ref_full").css({"z-index": "inherit", "display": "none"});
+				$(".ref, .ref_active").css({"color": "inherit"});
+				ref = false;
+			}
+		} else {
+			$(".ref_active").css({"display": "none"});
+			$(".ref_full").css({"display": "inline"});
+		}	
+	})
+});
+</script>
+	
+</body>
+</html>
