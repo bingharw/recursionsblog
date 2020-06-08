@@ -74,7 +74,7 @@ h1 {
 	background-attachment: fixed;
 	background-position: top center;
   	background-repeat: no-repeat;
-  	background-size: cover;
+  	background-size: 800px;
 	color: #fff;
 	text-align: right;
 	padding: 2.5vw;
@@ -290,6 +290,7 @@ aside {
 	}
 	.header_img {
 		height: 1100px;
+		 background-size: cover;
 	}
 	.post_info {
 		top: 60vh;
