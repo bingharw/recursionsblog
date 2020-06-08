@@ -81,7 +81,7 @@ h1 {
 }
 footer {
 	text-align: center;
-	margin: 4em 2em;
+	margin: 4em 20%;
 }
 small {
 	color: #bbb;
@@ -233,7 +233,6 @@ aside {
 		margin-top: 3em;
 		display: flex;
         flex-direction: row;
-		transition: transform 1.5s;
     }
 	
 	/* MENU PAGE */
@@ -374,7 +373,8 @@ aside {
 		max-width: 65em;
 	}
 	.article_body {
-		max-width: 40em;
+		max-width: 60em;
+		flex: 0 1 65%;
 	}
 	.proj_display {
 		flex: 1 2 50em;
