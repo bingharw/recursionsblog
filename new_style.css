@@ -196,7 +196,7 @@ figcaption {
 	font-size: .9em;
 	color: #ddd;
 	text-align: center;
-	margin-bottom: 1.2em;
+	margin: .5em 5% 1em 5%;
 }
 
 pre {
