@@ -90,7 +90,6 @@ strong {
 	font-style: italic;
 }
 
-
 /* MENU PAGE */
 
 .proj_info {
@@ -197,6 +196,7 @@ figcaption {
 	font-size: .9em;
 	color: #ddd;
 	text-align: center;
+	margin-bottom: 1.2em;
 }
 
 pre {
@@ -275,7 +275,7 @@ aside {
 	header {
 		flex-direction: row;
 		justify-content: space-between;
-		font-size: 1em;
+		font-size: 1.5em;
 	}
 	nav ul {
 		flex-flow: column;
@@ -287,11 +287,11 @@ aside {
 	/*	font-size: 1.2em; */
 	}
 	h1 {
-		font-size: 4vw;
+		font-size: 5vw;
 	}
 	.header_img {
 		height: 1100px;
-		background-position: center;
+		background-position: top center;
 	}
 	.post_info {
 		top: 60vh;
@@ -343,7 +343,7 @@ aside {
 @media screen and (min-width: 1025px) {
 
 	header_wrap {
-		text-align: center;
+		align-content: center;
 		display: flex;
 		justify-content: center;
 	}
@@ -355,7 +355,6 @@ aside {
 		background-size: 65em;
 		max-width: 65em;
 		height: 50em;
-		background-position: top center;
 	}
 	.outer_flex {
 		display: flex;
