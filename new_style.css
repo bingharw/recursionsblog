@@ -72,7 +72,7 @@ h1 {
 .header_img {
 	height: 800px;
 	background-attachment: fixed;
-  	background-position: top;
+	background-position: top center;
   	background-repeat: no-repeat;
   	background-size: cover;
 	color: #fff;
@@ -291,7 +291,6 @@ aside {
 	}
 	.header_img {
 		height: 1100px;
-		background-position: top center;
 	}
 	.post_info {
 		top: 60vh;
