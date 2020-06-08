@@ -78,7 +78,7 @@
 				<img src="dog_file.png" alt="Selected RAM offsets">
 				<figcaption>Fig. 3: RAM addresses pointing to dog's actor overlay and instance</figcaption>
 				<p>The following five lines contain dynamic information about the actor’s position in the scene (see below). The three bytes of shifting information spanning addresses 0x08042CEA4 to 0x8042CAC (Fig 4: top line) contain the actor’s X, Y and Z coordinates. The Y axis stays at 0 while the dog remains on the ground, but rises to around 421A0000 when picked up. You’ll notice the information remains static for a few seconds as the dog stops moving to bark. </p>
-				<img src="dog_xyz.gif" alt="Selected RAM offsets">
+				<img src="dog_xyz.gif" alt="Selected RAM offsets" style="max-width: 20em">
 				<figcaption>Fig. 4: RAM addresses with dog's location and rotation data</figcaption>
 				<p>The single byte of information at 0x8042CEB0 (Fig. 4: start of second line down) contains a value for the dog’s rotation. It changes as the dog moves in its circle around the scene, and like the XYZ coordinates it pauses when the dog stops to bark.</p>
 				<p>Skipping over a few bytes, the three that span offsets 0x8042CEBC to 0x8042CEDE0 (Fig. 4: end of forth and start of fifth lines) contain values for the dog’s scale on X, Y and Z axes.</p>
