@@ -75,11 +75,11 @@
 				<p>We can now begin to start deconstructing the different components that make up our dog actor. First of all, for just over the first two lines (0x8042CE80 to 0x8042CEA0), we have information that “points” to ROM files containing data about the dog actor as well as its particular instance in this scene (see Fig. 1). The 00E2 that begins this instance is constant across dog actors, whereas the rest of the numeric information differs.</p>
 				<img src="dog_file.png" alt="Selected RAM offsets">
 				<figcaption>Fig. 3: RAM addresses pointing to dog's actor overlay and instance</figcaption>
-				<p>The following five lines contain dynamic information about the actor’s position in the scene (see below). The three bytes of shifting information spanning addresses 0x08042CEA4 to 0x8042CAC (top line) contain the actor’s X, Y and Z coordinates. You’ll notice the information remains static for a few seconds as the dog stops moving to bark. </p>
+				<p>The following five lines contain dynamic information about the actor’s position in the scene (see below). The three bytes of shifting information spanning addresses 0x08042CEA4 to 0x8042CAC (Fig 4: top line) contain the actor’s X, Y and Z coordinates. You’ll notice the information remains static for a few seconds as the dog stops moving to bark. </p>
 				<img src="dog_xyz.gif" alt="Selected RAM offsets">
 				<figcaption>Fig. 4: RAM addresses with dog's location and rotation data</figcaption>
 				<p>The single byte of information at 0x8042CEB0 (Fig. 4: start of second line down) contains the dog’s rotation data. It changes as the dog moves in its circle around the scene, and like the XYZ coordinates it pauses when the dog stops to bark.</p>
-				<p>Skipping over a few bytes, the three that span offsets 0x8042CEBC to 0x8042CEDE0 (Fig. 4: bottom two lines in above image) contain data about the dog’s scale, with X, Y and Z axes. The Y axis stays at 0 while the dog remains on the ground, but rises to around 421A0000 when picked up.</p>
+				<p>Skipping over a few bytes, the three that span offsets 0x8042CEBC to 0x8042CEDE0 (Fig. 4: end of third and start of forth lines) contain data about the dog’s scale, with X, Y and Z axes. The Y axis stays at 0 while the dog remains on the ground, but rises to around 421A0000 when picked up.</p>
 				<p>The Project64D debugger functions like a hex editor, meaning that the user can fiddle with the values stored in RAM. Editing the bytes of XYZ data in the debugger moves the dog around the scene, while editing the rotation data causes the dog to turn around on the spot. This is how I mapped out these values. Enjoyably, editing the dog’s scale causes it to enlarge and shrink along X, Y and Z axes. </p>
 				<img src="dog_large.png" alt="A dog twice the size of the boy">
 				<figcaption>Fig. 5: The dog actor with increaed XYZ scale vlaues</figcaption>
@@ -94,11 +94,11 @@
 					<span class="ref_active"> (...)</span>
 					<span class="ref_full"><cite>: Capitalism and Schizophrenia (London: Bloomsbury, 2013)</cite>, pp. 196-198</span></p>
             	</aside>
-				<p>This decoupling of an actor’s faces reminds me of Gilles Deleuze and Félix  Guattari’s desire to escape the restrictive cultural focus on the face—“white cheeks, a chalk face with eyes cut in for. a black hole”:</p>
+				<p>This decoupling of an actor’s faces reminds me of Gilles Deleuze and Félix  Guattari’s desire to escape the restrictive cultural focus on the face—“white cheeks, a chalk face with eyes cut in for a black hole”:</p>
 					<blockquote>
 					the face is a horror story. It is certain that the signifier does not construct the wall that it needs all by itself; it is certain that subjectivity does not dig its hole all alone. Concrete faces cannot be assumed to come ready-made. They are engendered by an <strong>abstract machine of faciality</strong> (<i>visagétité</i>), which produces them at the same time as it gives back its white wall and subjectivity is black hole. Thus the black hole/white wall system is, to begin with, not a face but the abstract machne that produces faces according to the changeable combinations of its cogwheels. Do not expect the abstract machine to resemble what it produces, or will produce. 
 					</blockquote>
-				<p>What might it mean to re-read the themes of <cite>Majora</cite> through an understanding of how faces and facing function in the game’s memory? What would it mean to think of a face not as a feature or property of an individual but rather as something assigned, or as a relation? This will require further investigation into actor files. </p>
+				<p>What might it mean to re-read the themes of <cite>Majora</cite> through an understanding of how faces and facing function in the game’s memory—its own "abstract machine of faciality"? What would it mean to think of a face not as a feature or property of an individual but rather as something assigned, or as a procedural relation? This will require further investigation into actor files. </p>
 			</div>
 			<aside class="right"></aside>
 		</div>
