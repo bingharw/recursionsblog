@@ -288,11 +288,6 @@ aside {
 	h1 {
 		font-size: 5vw;
 	}
-	.header_img {
-		height: 1100px;
-		background-attachment: fixed;
-		background-size: cover;
-	}
 	.post_info {
 		top: 60vh;
 		margin-left: 25%;
@@ -352,6 +347,7 @@ aside {
 		justify-content: center;
 	}
 	.header_img {
+		background-attachment: fixed;
 		background-size: 65em;
 		max-width: 65em;
 		height: 50em;
